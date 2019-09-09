@@ -1,0 +1,10 @@
+{
+    "require": {
+        "symfony/orm-pack": "^1.0",
+        "symfony/routing": "^4.3",
+        "doctrine/annotations": "^1.7"
+    },
+    "require-dev": {
+        "symfony/maker-bundle": "^1.13"
+    }
+}
