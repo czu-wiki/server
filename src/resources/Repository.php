@@ -1,19 +1,48 @@
 <?php
 
+use Connection\Connection;
 
-abstract class Repository {
-    function __construct() {
+require_once "Connection.php";
+abstract class Repository
+{
 
+	static function readAll($lim=99){
+        $sql = "SELECT * FROM ". static::getTableName()." LIMIT " . $lim;
+        $statement =Connection::pdo()->prepare($sql);
+        $statement->execute();
+        $i=0;
+        while($records[$i]=$statement->fetch(PDO::FETCH_ASSOC)){
+            $i++;
+        }
+        return $records;
     }
 
-    static abstract function readAll($lim);
+	abstract static function readAllDeep($lim);
 
-    static abstract function read($id);
+	abstract static function readAllRearDeep($lim, $deep);
 
-    static abstract function update($Data);
+	static function read($id){
+        $sql = "SELECT * FROM ". static::getTableName() . " WHERE id=".$id ;
+        $statement = Connection::pdo()->prepare($sql);
+        $statement->execute();
+        $record=$statement->fetch(PDO::FETCH_ASSOC);
+        return $record;
+    }
 
-    static abstract function delete($id);
+	abstract static function readDeep($id);
 
-    static abstract function create($Data);
+	abstract static function readRearDeep($id, $deep);
+
+	abstract static function update($Data);
+
+	static function delete($id){
+        $sql="DELETE FROM ". self::getTableName(). " WHERE id=". $id;
+        $statement=Connection::pdo()->prepare($sql);
+        $statement->execute();
+    }
+
+	abstract static function create($Data);
+
+	abstract static function createDeep($Data);
 
 }

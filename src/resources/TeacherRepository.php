@@ -1,20 +1,51 @@
 <?php
 
-class Teacher {
-    function __construct($id = null, $name = null) {
-        $this->id = $id;
-        $this->name = $name;
-    }
+use Connection\Connection;
+
+class Teacher
+{
+    public $id;
+    public $name;
 }
 
-class TeacherRepository extends Repository {
+class TeacherRepository extends Repository
+{
+    static function getTableName(){
+        return "TEACHERS";
+    }
+    static function readAll($lim=99) {
+        $sql = "SELECT * FROM ". self::getTableName()." LIMIT " . $lim;
+        $statement =Connection::pdo()->prepare($sql);
+        $statement->execute();
+        $i=0;
+        while($teachers[$i]=$statement->fetch(PDO::FETCH_ASSOC)){
+            $i++;
+        }
+        return $teachers;
+    }
 
-    static function readAll($lim) {
-        // TODO: Implement readAll() method.
+    static function readAllDeep($lim) {
+        return self::readAll($lim);
+    }
+
+    static function readAllRearDeep($lim, $deep) {
+        return self::readAll($lim);
     }
 
     static function read($id) {
-        // TODO: Implement read() method.
+        $sql = "SELECT * FROM ". self::getTableName() . " WHERE id=".$id ;
+        $statement = Connection::pdo()->prepare($sql);
+        $statement->execute();
+        $tmp=$statement->fetch(PDO::FETCH_ASSOC);
+        return $tmp;
+    }
+
+    static function readDeep($id) {
+        // TODO: Implement readDeep() method.
+    }
+
+    static function readRearDeep($id, $deep) {
+        // TODO: Implement readRearDeep() method.
     }
 
     static function update($Data) {
@@ -27,5 +58,9 @@ class TeacherRepository extends Repository {
 
     static function create($Data) {
         // TODO: Implement create() method.
+    }
+
+    static function createDeep($Data) {
+        // TODO: Implement createDeep() method.
     }
 }

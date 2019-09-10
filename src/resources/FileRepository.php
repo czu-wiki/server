@@ -1,23 +1,40 @@
 <?php
 
-class File {
-    function __construct($id = null, $filename = null, $hash = null, $author_id = null, $type_id = null) {
-        $this->id = $id;
-        $this->filename = $filename;
-        $this->hash = $hash;
-        $this->author_id = $author_id;
-        $this->type_id = $type_id;
-    }
+class File
+{
+    public $id;
+    public $filename;
+    public $hash;
+    public $author_id;
+    public $type_id;
+
 }
 
-class FileRepository extends Repository {
+class FileRepository extends Repository
+{
 
     static function readAll($lim) {
         // TODO: Implement readAll() method.
     }
 
+    static function readAllDeep($lim) {
+        // TODO: Implement readAllDeep() method.
+    }
+
+    static function readAllRearDeep($lim, $deep) {
+        // TODO: Implement readAllRearDeep() method.
+    }
+
     static function read($id) {
         // TODO: Implement read() method.
+    }
+
+    static function readDeep($id) {
+        // TODO: Implement readDeep() method.
+    }
+
+    static function readRearDeep($id, $deep) {
+        // TODO: Implement readRearDeep() method.
     }
 
     static function update($Data) {
@@ -30,5 +47,13 @@ class FileRepository extends Repository {
 
     static function create($Data) {
         // TODO: Implement create() method.
+    }
+
+    static function createDeep($Data) {
+        // TODO: Implement createDeep() method.
+    }
+
+    static function createRearDeep($Data, $deep) {
+        // TODO: Implement createRearDeep() method.
     }
 }
