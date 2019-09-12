@@ -1,12 +1,9 @@
 <?php
 
-class PostFile
-{
-    public $post_id;
-    public $file_id;
+class PostFile {
+	public $post_id;
+	public $file_id;
 }
 
-class PostFileRepository extends Repository
-{
-
+class PostFileRepository extends Repository {
 }

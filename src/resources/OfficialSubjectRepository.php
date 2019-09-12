@@ -1,16 +1,12 @@
 <?php
 
-class OfficialSubject
-{
-    public $id;
-    public $code;
-    public $name;
-    public $faculty_id;
-    public $subject_id;
-
+class OfficialSubject {
+	public $id;
+	public $code;
+	public $name;
+	public $faculty_id;
+	public $subject_id;
 }
 
-class OfficialSubjectRepository extends Repository
-{
-
+class OfficialSubjectRepository extends Repository {
 }
